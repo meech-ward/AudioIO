@@ -14,4 +14,10 @@ public protocol AudioPlayable {
   
   /// Stop Playing
   func stop(closure: (@escaping (_ successfully: Bool) -> ()))
+  
+  /// The time, in seconds, since the beginning of the playing.
+  var currentTime: TimeInterval { get }
+  
+  /// True if recording, false otherwise.
+//  var isRecording: Bool { get }
 }

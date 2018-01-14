@@ -11,6 +11,10 @@ public struct AudioPlayer {
   
   let playable: AudioPlayable
   
+  public var currentTime: TimeInterval {
+    return playable.currentTime
+  }
+  
   public init(playable: AudioPlayable) {
     self.playable = playable
   }
