@@ -18,6 +18,6 @@ public protocol AudioPlayable {
   /// The time, in seconds, since the beginning of the playing.
   var currentTime: TimeInterval { get }
   
-  /// True if recording, false otherwise.
-//  var isRecording: Bool { get }
+  /// True if playing, false otherwise.
+  var isPlaying: Bool { get }
 }

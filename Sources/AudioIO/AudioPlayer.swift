@@ -15,6 +15,10 @@ public struct AudioPlayer {
     return playable.currentTime
   }
   
+  public var isPlaying: Bool {
+    return playable.isPlaying
+  }
+  
   public init(playable: AudioPlayable) {
     self.playable = playable
   }

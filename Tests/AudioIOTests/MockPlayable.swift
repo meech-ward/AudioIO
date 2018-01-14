@@ -31,11 +31,13 @@ class MockPlayable: AudioPlayable {
     started = true
     stopped = false
     playClosure = closure
+    isPlaying = true
   }
   func stop(closure: @escaping ((Bool) -> ()) = {_ in }) {
     started = false
     stopped = true
     stopClosure = closure
+    isPlaying = false
   }
 }
 

@@ -21,17 +21,31 @@ class AudioPlayer_tests: XCTestCase {
           player = AudioPlayer(playable: playable)
         }
         
-        it("should return the current time of the audio file") {
-          playable.currentTime = 0.0
-          expect(player.currentTime == 0.0).to.be.true()
-          playable.currentTime = 1.0
-          expect(player.currentTime == 1.0).to.be.true()
-          playable.currentTime = 1.2
-          expect(player.currentTime == 1.2).to.be.true()
+        describe(".currentTime") {
+          
+          it("should return the current time of the audio file") {
+            playable.currentTime = 0.0
+            expect(player.currentTime == 0.0).to.be.true()
+            playable.currentTime = 1.0
+            expect(player.currentTime == 1.0).to.be.true()
+            playable.currentTime = 1.2
+            expect(player.currentTime == 1.2).to.be.true()
+          }
         }
         
-        it("should return the if the file is playing or not") {
-          
+        describe(".isPlaying") {
+          context("when the file is playing") {
+            it("should return true") {
+              player.play()
+              expect(player.isPlaying).to.be.true()
+            }
+          }
+          context("when the file is not playing") {
+            it("should return false") {
+              player.stop()
+              expect(player.isPlaying == false).to.be.true()
+            }
+          }
         }
       }
     }
