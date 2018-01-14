@@ -15,6 +15,9 @@ public protocol AudioPlayable {
   /// Stop Playing
   func stop(closure: (@escaping (_ successfully: Bool) -> ()))
   
+  /// Do any preparation that is required to play
+  func prepare()
+  
   /// The time, in seconds, since the beginning of the playing.
   var currentTime: TimeInterval { get }
   

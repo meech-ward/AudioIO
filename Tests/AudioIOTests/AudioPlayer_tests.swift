@@ -60,7 +60,8 @@ class AudioPlayer_tests: XCTestCase {
         
         describe("#prepare") {
           it("should call prepare on the playable") {
-            
+            player.prepare()
+            expect(playable.prepared).to.be.true()
           }
         }
       }

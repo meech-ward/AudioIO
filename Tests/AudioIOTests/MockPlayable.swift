@@ -19,6 +19,12 @@ class MockPlayable: AudioPlayable {
   var started = false
   var stopped = false
   
+  var prepared = false
+  
+  func prepare() {
+    prepared = true
+  }
+  
   func play() {
     started = true
     stopped = false

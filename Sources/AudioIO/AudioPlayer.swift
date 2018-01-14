@@ -30,8 +30,14 @@ public struct AudioPlayer {
   
   let playable: AudioPlayable
   
+  // MARK: 👩‍💻
+  
   public init(playable: AudioPlayable) {
     self.playable = playable
+  }
+  
+  public func prepare() {
+    self.playable.prepare()
   }
   
   public func play(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
