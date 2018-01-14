@@ -22,7 +22,6 @@ class AudioPlayer_tests: XCTestCase {
         }
         
         describe(".currentTime") {
-          
           it("should return the current time of the audio file") {
             playable.currentTime = 0.0
             expect(player.currentTime == 0.0).to.be.true()
@@ -45,6 +44,23 @@ class AudioPlayer_tests: XCTestCase {
               player.stop()
               expect(player.isPlaying == false).to.be.true()
             }
+          }
+        }
+        
+        describe(".duration") {
+          it("should return the playable's duration") {
+            playable.duration = 0
+            expect(player.duration == 0).to.be.true()
+            playable.duration = 1
+            expect(player.duration == 1).to.be.true()
+            playable.duration = 1.2
+            expect(player.duration == 1.2).to.be.true()
+          }
+        }
+        
+        describe("#prepare") {
+          it("should call prepare on the playable") {
+            
           }
         }
       }

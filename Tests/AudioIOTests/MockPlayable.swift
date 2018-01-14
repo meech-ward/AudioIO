@@ -10,10 +10,11 @@ import Foundation
 
 class MockPlayable: AudioPlayable {
   
-  var currentTime: TimeInterval = 0
+  var currentTime: TimeInterval = -1
   var playClosure: ((Bool) -> ())?
   var stopClosure: ((Bool) -> ())?
   var isPlaying: Bool = false
+  var duration: Double = -1
   
   var started = false
   var stopped = false

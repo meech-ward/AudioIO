@@ -18,6 +18,9 @@ public protocol AudioPlayable {
   /// The time, in seconds, since the beginning of the playing.
   var currentTime: TimeInterval { get }
   
+  /// The duration, in seconds, of the entire file.
+  var duration: TimeInterval { get }
+  
   /// True if playing, false otherwise.
   var isPlaying: Bool { get }
 }

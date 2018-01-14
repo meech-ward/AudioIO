@@ -9,15 +9,26 @@ import Foundation
 
 public struct AudioPlayer {
   
-  let playable: AudioPlayable
+  // MARK: Public vars
   
+  /// The current playhead time of the file that's being played.
   public var currentTime: TimeInterval {
     return playable.currentTime
   }
   
+  /// The total duration of the audio file
+  public var duration: TimeInterval {
+    return playable.duration
+  }
+  
+  /// True if the file is playing, false otherwise.
   public var isPlaying: Bool {
     return playable.isPlaying
   }
+  
+  // MARK: Private vars
+  
+  let playable: AudioPlayable
   
   public init(playable: AudioPlayable) {
     self.playable = playable
