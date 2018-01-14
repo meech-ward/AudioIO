@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- `AudioPlayer` struct that handles playing audio.
+- `AudioPlayable` protocol that an audio object must conform to to be played. 
 
 ### Changed
 
