@@ -36,10 +36,13 @@ public struct AudioPlayer {
     self.playable = playable
   }
   
+  /// Do any preperation required before playing
   public func prepare() {
     self.playable.prepare()
   }
   
+  /**
+  */
   public func play(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
     playable.play() { successful in
       closure(successful)
@@ -49,6 +52,18 @@ public struct AudioPlayer {
   public func stop(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
     playable.stop() { successful in
       closure(successful)
+    }
+  }
+  
+  public func restart(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
+    playable.stop() { successful in
+      closure(successful)
+      guard successful else {
+        return
+      }
+      self.playable.play() { successful in
+        //      closure(successful)
+      }
     }
   }
 }

@@ -11,40 +11,49 @@ import Foundation
 class MockPlayable: AudioPlayable {
   
   var currentTime: TimeInterval = -1
-  var playClosure: ((Bool) -> ())?
-  var stopClosure: ((Bool) -> ())?
+  var playClosure: ((Bool) -> ())? {
+    didSet {
+      playClosureUpdated?(playClosure!)
+    }
+  }
+  var stopClosure: ((Bool) -> ())? {
+    didSet {
+      stopClosureUpdated?(stopClosure!)
+    }
+  }
+  var playClosureUpdated: (((Bool) -> ()) -> (Void))?
+  var stopClosureUpdated: (((Bool) -> ()) -> (Void))?
+  
+  var runClosuresImidiatly = false
   var isPlaying: Bool = false
   var duration: Double = -1
   
   var started = false
   var stopped = false
   
+  var hasStarted = false
+  var hasStopped = false
+  
   var prepared = false
   
   func prepare() {
     prepared = true
   }
-  
-  func play() {
-    started = true
-    stopped = false
-  }
-  func stop() {
-    started = false
-    stopped = true
-  }
 
   func play(closure: @escaping ((Bool) -> ()) = {_ in }) {
     started = true
     stopped = false
-    playClosure = closure
+    hasStarted = true
     isPlaying = true
+    playClosure = closure
   }
+  
   func stop(closure: @escaping ((Bool) -> ()) = {_ in }) {
     started = false
     stopped = true
-    stopClosure = closure
+    hasStopped = true
     isPlaying = false
+    stopClosure = closure
   }
 }
 
