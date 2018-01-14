@@ -19,7 +19,19 @@ public struct AudioPlayer {
     playable.play()
   }
   
+  public func play(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
+    playable.play() { successful in
+      closure(successful)
+    }
+  }
+  
   public func stop() {
     playable.stop()
+  }
+  
+  public func stop(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
+    playable.stop() { successful in
+      closure(successful)
+    }
   }
 }

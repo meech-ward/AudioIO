@@ -32,34 +32,34 @@ class AudioPlayer_PlayStopClosure_tests: XCTestCase {
               expect(playable.stopped == false).to.be.true()
             }
           }
-          //          context("when passed a start closure") {
-          //            context("when the playable calls its start closure") {
-          //              it("should call the start closure ") {
-          //                var started = false
-          //                audioRecorder.start() { _ in
-          //                  started = true
-          //                }
-          //                mockRecordable.startClosure?(true)
-          //                expect(started).to.be.true()
-          //              }
-          //              it("should pass in false when the recordable passes false") {
-          //                var result = true
-          //                audioRecorder.start() { flag in
-          //                  result = flag
-          //                }
-          //                mockRecordable.startClosure?(false)
-          //                expect(result != true).to.be.true()
-          //              }
-          //              it("should pass in true when the recordable passes true") {
-          //                var result = false
-          //                audioRecorder.start() { flag in
-          //                  result = flag
-          //                }
-          //                mockRecordable.startClosure?(true)
-          //                expect(result).to.be.true()
-          //              }
-          //            }
-          //          }
+          context("when passed a start closure") {
+            context("when the playable calls its start closure") {
+              it("should call the start closure ") {
+                var started = false
+                player.play() { _ in
+                  started = true
+                }
+                playable.playClosure?(true)
+                expect(started).to.be.true()
+              }
+              it("should pass in false when the recordable passes false") {
+                var result = true
+                player.play() { flag in
+                  result = flag
+                }
+                playable.playClosure?(false)
+                expect(result != true).to.be.true()
+              }
+              it("should pass in true when the recordable passes true") {
+                var result = false
+                player.play() { flag in
+                  result = flag
+                }
+                playable.playClosure?(true)
+                expect(result).to.be.true()
+              }
+            }
+          }
         }
         
         describe("#stop()") {
@@ -74,34 +74,34 @@ class AudioPlayer_PlayStopClosure_tests: XCTestCase {
             }
           }
           
-          //          context("when passed a stop closure") {
-          //            context("when the recordable calls its stop closure") {
-          //              it("should call the start closure ") {
-          //                var stopped = false
-          //                audioRecorder.stop() { _ in
-          //                  stopped = true
-          //                }
-          //                mockRecordable.stopClosure?(true)
-          //                expect(stopped).to.be.true()
-          //              }
-          //              it("should pass in false when the recordable passes false") {
-          //                var result = true
-          //                audioRecorder.stop() { flag in
-          //                  result = flag
-          //                }
-          //                mockRecordable.stopClosure?(false)
-          //                expect(result != true).to.be.true()
-          //              }
-          //              it("should pass in true when the recordable passes true") {
-          //                var result = false
-          //                audioRecorder.stop() { flag in
-          //                  result = flag
-          //                }
-          //                mockRecordable.stopClosure?(true)
-          //                expect(result).to.be.true()
-          //              }
-          //            }
-          //          }
+          context("when passed a stop closure") {
+            context("when the recordable calls its stop closure") {
+              it("should call the start closure ") {
+                var stopped = false
+                player.stop() { _ in
+                  stopped = true
+                }
+                playable.stopClosure?(true)
+                expect(stopped).to.be.true()
+              }
+              it("should pass in false when the recordable passes false") {
+                var result = true
+                player.stop() { flag in
+                  result = flag
+                }
+                playable.stopClosure?(false)
+                expect(result != true).to.be.true()
+              }
+              it("should pass in true when the recordable passes true") {
+                var result = false
+                player.stop() { flag in
+                  result = flag
+                }
+                playable.stopClosure?(true)
+                expect(result).to.be.true()
+              }
+            }
+          }
         }
       }
     }

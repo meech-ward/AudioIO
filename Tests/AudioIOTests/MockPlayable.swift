@@ -10,11 +10,11 @@ import Foundation
 
 class MockPlayable: AudioPlayable {
   
-//  var currentTime: TimeInterval = 0
-//  var startClosure: ((Bool) -> ())?
-//  var stopClosure: ((Bool) -> ())?
-//  var isRecording: Bool = false
-//  
+  var currentTime: TimeInterval = 0
+  var playClosure: ((Bool) -> ())?
+  var stopClosure: ((Bool) -> ())?
+  var isPlaying: Bool = false
+  
   var started = false
   var stopped = false
   
@@ -26,14 +26,16 @@ class MockPlayable: AudioPlayable {
     started = false
     stopped = true
   }
-//
-//  func start(closure: @escaping ((Bool) -> ()) = {_ in }) {
-//    started = true
-//    startClosure = closure
-//  }
-//  func stop(closure: @escaping ((Bool) -> ()) = {_ in }) {
-//    stopped = true
-//    stopClosure = closure
-//  }
+
+  func play(closure: @escaping ((Bool) -> ()) = {_ in }) {
+    started = true
+    stopped = false
+    playClosure = closure
+  }
+  func stop(closure: @escaping ((Bool) -> ()) = {_ in }) {
+    started = false
+    stopped = true
+    stopClosure = closure
+  }
 }
 

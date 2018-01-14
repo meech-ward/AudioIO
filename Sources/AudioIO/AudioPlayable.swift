@@ -12,4 +12,10 @@ public protocol AudioPlayable {
   func play()
   /// Stop playing
   func stop()
+  
+  /// Start Playing
+  func play(closure: (@escaping (_ successfully: Bool) -> ()))
+  
+  /// Stop Playing
+  func stop(closure: (@escaping (_ successfully: Bool) -> ()))
 }
