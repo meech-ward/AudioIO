@@ -13,7 +13,7 @@ let package = Package(
             targets: ["AudioIO"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ObserveSocial/Observe", from: "0.4.0"),
+        .package(url: "https://github.com/ObserveSocial/Observe", from: "0.5.0"),
         .package(url: "https://github.com/ObserveSocial/Focus", from: "0.5.0")
     ],
     targets: [
