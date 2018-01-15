@@ -24,11 +24,11 @@ class AudioPlayer_tests: XCTestCase {
         describe(".currentTime") {
           it("should return the current time of the audio file") {
             playable.currentTime = 0.0
-            expect(player.currentTime == 0.0).to.be.true()
+            expect(player.currentTime).to.equal(0.0)
             playable.currentTime = 1.0
-            expect(player.currentTime == 1.0).to.be.true()
+            expect(player.currentTime).to.equal(1.0)
             playable.currentTime = 1.2
-            expect(player.currentTime == 1.2).to.be.true()
+            expect(player.currentTime).to.equal(1.2)
           }
         }
         
@@ -42,19 +42,19 @@ class AudioPlayer_tests: XCTestCase {
           context("when the file is not playing") {
             it("should return false") {
               player.stop()
-              expect(player.isPlaying == false).to.be.true()
+              expect(player.isPlaying).to.be.false()
             }
           }
         }
         
         describe(".duration") {
           it("should return the playable's duration") {
-            playable.duration = 0
-            expect(player.duration == 0).to.be.true()
-            playable.duration = 1
-            expect(player.duration == 1).to.be.true()
+            playable.duration = 0.0
+            expect(player.duration).to.equal(0.0)
+            playable.duration = 1.0
+            expect(player.duration).to.equal(1.0)
             playable.duration = 1.2
-            expect(player.duration == 1.2).to.be.true()
+            expect(player.duration).to.equal(1.2)
           }
         }
         
@@ -85,7 +85,7 @@ class AudioPlayer_tests: XCTestCase {
               expect(playable.hasStarted).to.be.true()
               expect(playable.hasStopped).to.be.true()
               expect(playable.started).to.be.true()
-              expect(playable.stopped == false).to.be.true()
+              expect(playable.stopped).to.be.false()
             }
           }
           
@@ -103,12 +103,12 @@ class AudioPlayer_tests: XCTestCase {
               player.restart() { flag in
                 successful = flag
               }
-              expect(successful == false).to.be.true()
+              expect(successful).to.be.false()
             }
             it("should try and stop but fail") {
               player.restart()
               expect(playable.hasStopped).to.be.true()
-              expect(playable.hasStarted == false).to.be.true()
+              expect(playable.hasStarted).to.be.false()
               expect(playable.stopped).to.be.true()
             }
             
