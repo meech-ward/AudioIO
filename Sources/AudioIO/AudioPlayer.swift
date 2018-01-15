@@ -62,7 +62,7 @@ public struct AudioPlayer {
         return
       }
       self.playable.play() { successful in
-        //      closure(successful)
+        closure(successful)
       }
     }
   }
