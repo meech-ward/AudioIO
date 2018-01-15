@@ -26,14 +26,30 @@ public struct AudioPlayer {
     return playable.isPlaying
   }
   
+  public var startTime: TimeInterval {
+    guard let audioSection = audioSection else {
+      return -1
+    }
+    return audioSection.startTime
+  }
+  
+  public var endTime: TimeInterval {
+    guard let audioSection = audioSection else {
+      return -1
+    }
+    return audioSection.endTime
+  }
+  
   // MARK: Private vars
   
   let playable: AudioPlayable
+  let audioSection: AudioSectionType?
   
   // MARK: 👩‍💻
   
-  public init(playable: AudioPlayable) {
+  public init(playable: AudioPlayable, audioSection: AudioSectionType? = nil) {
     self.playable = playable
+    self.audioSection = audioSection
   }
   
   /// Do any preperation required before playing
