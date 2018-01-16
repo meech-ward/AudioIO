@@ -81,6 +81,12 @@ class AudioPlayer_tests: XCTestCase {
             expect(player.endTime).to.equal(1.2)
           }
         }
+        
+        describe(".pitch") {
+          it("should be 0") {
+            expect(player.pitch).to.equal(0)
+          }
+        }
       }
     }
   }

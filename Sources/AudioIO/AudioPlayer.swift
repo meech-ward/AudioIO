@@ -40,16 +40,33 @@ public struct AudioPlayer {
     return audioSection.endTime
   }
   
+  public var pitch: Double {
+    set {
+      guard let pitchShifter = pitchShifter else {
+        return
+      }
+      pitchShifter.pitch = newValue
+    }
+    get {
+      guard let pitchShifter = pitchShifter else {
+        return 0.0
+      }
+      return pitchShifter.pitch
+    }
+  }
+  
   // MARK: Private vars
   
   let playable: AudioPlayable
   let audioSection: AudioSectionType?
+  let pitchShifter: PitchShifterType?
   
   // MARK: 👩‍💻
   
-  public init(playable: AudioPlayable, audioSection: AudioSectionType? = nil) {
+  public init(playable: AudioPlayable, audioSection: AudioSectionType? = nil, pitchShifter: PitchShifterType? = nil) {
     self.playable = playable
     self.audioSection = audioSection
+    self.pitchShifter = pitchShifter
   }
   
   /// Do any preperation required before playing
