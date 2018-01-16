@@ -16,6 +16,9 @@ public protocol AudioRecordable {
   /// Stop Recording
   func stop(closure: (@escaping (_ successfully: Bool) -> ()))
   
+  /// Delete Recording
+  func delete(closure: (@escaping (_ successfully: Bool) -> ()))
+  
   /// The time, in seconds, since the beginning of the recording.
   var currentTime: TimeInterval { get }
   

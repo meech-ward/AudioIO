@@ -34,6 +34,16 @@ public struct AudioRecorder {
     self.amplitudeTracker = amplitudeTracker
   }
   
+}
+
+/// Public methods
+extension AudioRecorder {
+  
+  /**
+   Start recording audio
+   
+   - parameter : closure called when the recording starts.
+  */
   public func start(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
     sendNewDataSample()
     self.dataTimer?.start(self.sendNewDataSample)
@@ -41,6 +51,38 @@ public struct AudioRecorder {
       closure(successful)
     }
   }
+  
+  /**
+   Stop recording audio
+   
+   - parameter : closure called when the recording stops.
+   */
+  public func stop(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
+    _recordable.stop() { successful in
+      closure(successful)
+    }
+    self.dataTimer?.stop()
+  }
+  
+  /**
+   Delete the recorded audio
+   
+   - parameter : closure called when the recording is deleted.
+   */
+  public func delete(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
+    if isRecording {
+      return
+    }
+    
+    recordable.delete { successfully in
+      closure(successfully)
+    }
+  }
+  
+}
+
+/// Sample Data
+extension AudioRecorder {
   
   /// Create an audio sample and send it to the data closure
   private func sendNewDataSample() {
@@ -65,12 +107,4 @@ public struct AudioRecorder {
     
     return AudioSample(time: time, amplitude: amplitude, rightAmplitude: rightAmplitude, leftAmplitude: leftAmplitude, frequency: frequency, power: power)
   }
-  
-  public func stop(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
-    _recordable.stop() { successful in
-      closure(successful)
-    }
-    self.dataTimer?.stop()
-  }
-  
 }
