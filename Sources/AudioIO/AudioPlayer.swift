@@ -65,8 +65,16 @@ public struct AudioPlayer {
   /**
   */
   public func play(closure: (@escaping (_ successfully: Bool) -> ()) = {_ in }) {
-    playable.play() { successful in
-      closure(successful)
+    guard let audioSection = self.audioSection else {
+      playable.play() { successful in
+        closure(successful)
+      }
+      return
+    }
+    
+    playable.play(startTime: audioSection.startTime,
+                  endTime: audioSection.endTime) { successful in
+                    closure(successful)
     }
   }
   

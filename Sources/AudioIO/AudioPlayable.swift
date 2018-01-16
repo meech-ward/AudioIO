@@ -11,6 +11,7 @@ public protocol AudioPlayable {
   
   /// Start Playing
   func play(closure: (@escaping (_ successfully: Bool) -> ()))
+  func play(startTime: TimeInterval, endTime: TimeInterval, closure: @escaping ((Bool) -> ()))
   
   /// Stop Playing
   func stop(closure: (@escaping (_ successfully: Bool) -> ()))

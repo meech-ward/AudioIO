@@ -55,6 +55,13 @@ class MockPlayable: AudioPlayable {
     playClosure = closure
   }
   
+  var playedStartTime: TimeInterval?
+  var playedEndTime: TimeInterval?
+  func play(startTime: TimeInterval, endTime: TimeInterval, closure: @escaping ((Bool) -> ()) = {_ in }) {
+    playedStartTime = startTime
+    playedEndTime = endTime
+  }
+  
   func stop(closure: @escaping ((Bool) -> ()) = {_ in }) {
     started = false
     stopped = true
