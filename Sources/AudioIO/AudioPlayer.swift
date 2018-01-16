@@ -28,14 +28,14 @@ public struct AudioPlayer {
   
   public var startTime: TimeInterval {
     guard let audioSection = audioSection else {
-      return -1
+      return 0
     }
     return audioSection.startTime
   }
   
   public var endTime: TimeInterval {
     guard let audioSection = audioSection else {
-      return -1
+      return playable.duration
     }
     return audioSection.endTime
   }

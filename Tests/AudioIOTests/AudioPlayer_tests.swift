@@ -64,6 +64,23 @@ class AudioPlayer_tests: XCTestCase {
             expect(playable.prepared).to.be.true()
           }
         }
+        
+        describe(".startTime") {
+          it("should be 0") {
+            expect(player.startTime).to.equal(0)
+          }
+        }
+        
+        describe(".endTime") {
+          it("should be the duration of the file") {
+            playable.duration = 0.0
+            expect(player.endTime).to.equal(0.0)
+            playable.duration = 1.0
+            expect(player.endTime).to.equal(1.0)
+            playable.duration = 1.2
+            expect(player.endTime).to.equal(1.2)
+          }
+        }
       }
     }
   }
