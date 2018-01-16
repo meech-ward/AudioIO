@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+## [0.2.0] - 2018-01-16
+### Added
+- `AudioPlayer` struct that handles playing audio.
+- `AudioPlayable` protocol that an audio object must conform to to be played. 
+- `PitchShifterType` protocol that can be used to change the pitch of audio.
+- `AudioSectionType` protocol that can be used to play only a section of audio
+
+### Changed
+
 ## [0.1.0] - 2018-01-14
 ### Added
 - `AudioInput` struct to manage input sensors such as microphones.
