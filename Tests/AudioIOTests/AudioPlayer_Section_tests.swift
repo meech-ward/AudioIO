@@ -45,6 +45,32 @@ class AudioPlayer_Section_tests: XCTestCase {
             audioSection.endTime = 1.2
             expect(player.endTime).to.equal(1.2)
           }
+          
+          describe("#prepare") {
+            func expectAudioSectionPrepare(startTime: TimeInterval, endTime: TimeInterval) {
+              audioSection.startTime = startTime
+              audioSection.endTime = endTime
+              player.prepare()
+              expect(playable.preparedStartTime!).to.equal(startTime)
+              expect(playable.preparedEndTime!).to.equal(endTime)
+            }
+            it("should prepare the audio playable with the start and end time") {
+              expectAudioSectionPrepare(startTime: 0.0, endTime: 0.0)
+              expectAudioSectionPrepare(startTime: 0.0, endTime: 1.0)
+              expectAudioSectionPrepare(startTime: 1.2, endTime: 2.5)
+            }
+            
+            it("should only call the prepare with start and end time") {
+              player.prepare()
+              expect(playable.prepared).to.be.false()
+            }
+          }
+          
+          describe("#play") {
+            it("should play the audio playable with the start and end time") {
+              
+            }
+          }
         }
       }
     }

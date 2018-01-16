@@ -17,6 +17,7 @@ public protocol AudioPlayable {
   
   /// Do any preparation that is required to play
   func prepare()
+  func prepare(startTime: TimeInterval, endTime: TimeInterval)
   
   /// The time, in seconds, since the beginning of the playing.
   var currentTime: TimeInterval { get }

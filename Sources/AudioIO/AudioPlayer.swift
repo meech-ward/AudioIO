@@ -54,7 +54,12 @@ public struct AudioPlayer {
   
   /// Do any preperation required before playing
   public func prepare() {
-    self.playable.prepare()
+    guard let audioSection = self.audioSection else {
+      self.playable.prepare()
+      return
+    }
+    
+    self.playable.prepare(startTime: audioSection.startTime, endTime: audioSection.endTime)
   }
   
   /**

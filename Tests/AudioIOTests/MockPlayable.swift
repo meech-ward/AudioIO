@@ -39,6 +39,13 @@ class MockPlayable: AudioPlayable {
   func prepare() {
     prepared = true
   }
+  
+  var preparedStartTime: TimeInterval?
+  var preparedEndTime: TimeInterval?
+  func prepare(startTime: TimeInterval, endTime: TimeInterval) {
+    preparedStartTime = startTime
+    preparedEndTime = endTime
+  }
 
   func play(closure: @escaping ((Bool) -> ()) = {_ in }) {
     started = true
