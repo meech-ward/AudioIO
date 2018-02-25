@@ -13,8 +13,9 @@ let package = Package(
             targets: ["AudioIO"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ObserveSocial/Observe", from: "0.5.0"),
-        .package(url: "https://github.com/ObserveSocial/Focus", from: "0.6.1")
+        .package(url: "https://github.com/meech-ward/Observe", from: "0.5.1"),
+        .package(url: "https://github.com/meech-ward/Focus", from: "0.6.2"),
+        .package(url: "https://github.com/meech-ward/ObserveFocusCleanReporter", from: "0.1.2")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -24,6 +25,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "AudioIOTests",
-            dependencies: ["AudioIO", "Observe", "Focus"]),
+            dependencies: ["AudioIO", "Observe", "Focus", "CleanReporter"]),
     ]
 )

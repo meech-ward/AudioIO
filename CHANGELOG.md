@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- a `delete` method to the audio recorder.
+- a public initializer to the audio time data.
 
 ### Changed
 
