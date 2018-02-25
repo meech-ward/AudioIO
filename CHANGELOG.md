@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+## [0.2.2] - 2018-02-24
+### Added
 - a `delete` method to the audio recorder.
 - a public initializer to the audio time data.
 
